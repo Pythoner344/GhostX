@@ -1,7 +1,7 @@
 local player = game.Players.LocalPlayer
 local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
 
--- Создаём кнопку "S"
+-- Создаём кнопку "G"
 local button = Instance.new("TextButton", gui)
 button.Size = UDim2.new(0, 50, 0, 50)
 button.Position = UDim2.new(0.9, 0, 0.1, 0)
@@ -13,7 +13,7 @@ button.TextSize = 20
 button.Draggable = true
 button.Active = true
 
--- Округление кнопки "S"
+-- Округление кнопки "G"
 local corner1 = Instance.new("UICorner", button)
 corner1.CornerRadius = UDim.new(1, 0)
 
@@ -113,4 +113,93 @@ runButton.MouseButton1Click:Connect(function()
     else
         warn("Ошибка: " .. err)
     end
+end)
+
+-- --- Кнопка HHUB в правом верхнем углу ---
+local hhubButton = Instance.new("TextButton", gui)
+hhubButton.Size = UDim2.new(0, 50, 0, 50)
+hhubButton.Position = UDim2.new(1, -60, 0, 10)
+hhubButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+hhubButton.Text = "HHUB"
+hhubButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+hhubButton.Font = Enum.Font.SourceSansBold
+hhubButton.TextSize = 18
+hhubButton.Draggable = true
+hhubButton.Active = true
+
+-- Округление кнопки HHUB
+local cornerHHUB = Instance.new("UICorner", hhubButton)
+cornerHHUB.CornerRadius = UDim.new(1, 0)
+
+-- --- Меню HHUB с функцией Fly ---
+local hhubFrame = Instance.new("Frame", gui)
+hhubFrame.Size = UDim2.new(0, 200, 0, 150)
+hhubFrame.Position = UDim2.new(1, -210, 0, 10)
+hhubFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+hhubFrame.Visible = false
+
+-- Округление окна HHUB
+local cornerHHUBFrame = Instance.new("UICorner", hhubFrame)
+cornerHHUBFrame.CornerRadius = UDim.new(0.1, 0)
+
+-- Кнопка "Fly"
+local flyButton = Instance.new("TextButton", hhubFrame)
+flyButton.Size = UDim2.new(1, -20, 0, 40)
+flyButton.Position = UDim2.new(0, 10, 0, 10)
+flyButton.Text = "Fly"
+flyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+flyButton.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
+flyButton.Font = Enum.Font.SourceSansBold
+flyButton.TextSize = 20
+
+-- Округление кнопки Fly
+local cornerFlyButton = Instance.new("UICorner", flyButton)
+cornerFlyButton.CornerRadius = UDim.new(0.1, 0)
+
+-- Кнопка "Закрыть" для HHUB
+local closeHHUBButton = Instance.new("TextButton", hhubFrame)
+closeHHUBButton.Size = UDim2.new(0, 40, 0, 40)
+closeHHUBButton.Position = UDim2.new(1, -50, 0, -50)
+closeHHUBButton.Text = "X"
+closeHHUBButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeHHUBButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+closeHHUBButton.Font = Enum.Font.SourceSansBold
+closeHHUBButton.TextSize = 20
+
+-- Округление кнопки закрытия HHUB
+local cornerCloseHHUB = Instance.new("UICorner", closeHHUBButton)
+cornerCloseHHUB.CornerRadius = UDim.new(0.5, 0)
+
+-- Кнопка "Скрыть" для скрытия меню HHUB
+local hideHHUBButton = Instance.new("TextButton", hhubFrame)
+hideHHUBButton.Size = UDim2.new(0, 50, 0, 50)
+hideHHUBButton.Position = UDim2.new(0, 10, 1, -60)
+hideHHUBButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+hideHHUBButton.Text = "Скрыть"
+hideHHUBButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+hideHHUBButton.Font = Enum.Font.SourceSansBold
+hideHHUBButton.TextSize = 18
+
+-- Округление кнопки "Скрыть"
+local cornerHideHHUB = Instance.new("UICorner", hideHHUBButton)
+cornerHideHHUB.CornerRadius = UDim.new(0.1, 0)
+
+-- Функция для открытия меню HHUB
+hhubButton.MouseButton1Click:Connect(function()
+    hhubFrame.Visible = true
+end)
+
+-- Функция для скрытия меню HHUB
+hideHHUBButton.MouseButton1Click:Connect(function()
+    hhubFrame.Visible = false
+end)
+
+-- Функция для закрытия меню HHUB
+closeHHUBButton.MouseButton1Click:Connect(function()
+    hhubFrame.Visible = false
+end)
+
+-- Функция для выполнения скрипта Fly
+flyButton.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-FLY-GUI-V3-19840"))()
 end)
